@@ -51,33 +51,33 @@ Le poste type que tous les exemplaires doivent respecter :
 Un poste de référence propre est installé et configuré **une seule fois**. C'est lui qui sera « photographié » pour servir de modèle.
 
 🕐 17.09.2026 08:58:53
-![01_creation_vm_reference](./screenshots/01_creation_vm_reference.png)
+![01_creation_vm_reference](https://hackmd.io/_uploads/Byb-euYYGg.png)
  création de la VM à partir de l'ISO Windows 10 Pro (détecté « Windows 10 x64 »)
 
 🕐 17.09.2026 09:02:25
-![02_specs_vm_reference](./screenshots/02_specs_vm_reference.png)
+![02_specs_vm_reference](https://hackmd.io/_uploads/Hk9-euFFGe.png)
  récapitulatif conforme au cahier des charges : `PC-STD-REF`, **40 Go**, **4096 Mo**, **2 CPU**
 
 🕐 17.09.2026 09:08:25
-![03_installation_windows](./screenshots/03_installation_windows.png)
+![03_installation_windows](https://hackmd.io/_uploads/SyuMeuFFze.png)
  installation de Windows 10 Professionnel en cours
 
 🕐 17.09.2026 09:28:13
-![04_bureau_reference](./screenshots/04_bureau_reference.png)
+![04_bureau_reference](https://hackmd.io/_uploads/S1WQedtKMe.png)
  Windows installé, arrivée sur le bureau du poste de référence ✅
 
 ### Configuration selon le cahier des charges
 
 🕐 17.09.2026 10:11:20
-![05_comptes_standard](./screenshots/05_comptes_standard.png)
+![05_comptes_standard](https://hackmd.io/_uploads/BJxExOYYfe.png)
  comptes locaux créés : **`admin-local`** (administrateur) et **`utilisateur`** (standard). *Note : la commande `net user` doit être lancée depuis une invite **administrateur**, sinon elle renvoie « Erreur système 5 – Accès refusé ».*
 
 🕐 17.09.2026 10:35:07
-![06_logiciel_7zip](./screenshots/06_logiciel_7zip.png)
+![06_logiciel_7zip](https://hackmd.io/_uploads/SkgrlutKGl.png)
  **7-Zip** installé (visible sur le bureau)
 
 🕐 17.09.2026 10:38:05
-![07_securite_inactivite_300](./screenshots/07_securite_inactivite_300.png)
+![07_securite_inactivite_300](https://hackmd.io/_uploads/BJxLedtYzg.png)
  stratégie de sécurité : verrouillage automatique après **300 secondes** d'inactivité (`secpol.msc`)
 
 ---
@@ -87,15 +87,15 @@ Un poste de référence propre est installé et configuré **une seule fois**. C
 C'est **l'étape clé** du déploiement. Un simple clone donnerait 10 postes portant le **même identifiant de sécurité (SID) et le même nom** → conflits sur le réseau et le domaine. **Sysprep** retire ces éléments uniques : au premier démarrage, chaque poste déployé génère sa propre identité.
 
 🕐 17.09.2026 10:48:07
-![08_sysprep_generaliser](./screenshots/08_sysprep_generaliser.png)
+![08_sysprep_generaliser](https://hackmd.io/_uploads/rJqvgdttzl.png)
  Sysprep configuré en **« Entrer en mode OOBE »**, case **« Généraliser » cochée**, option **« Arrêter le système »**. La case *Généraliser* est ce qui rend l'image déployable.
 
 🕐 17.09.2026 10:50:14
-![09_sysprep_arret](./screenshots/09_sysprep_arret.png)
+![09_sysprep_arret](https://hackmd.io/_uploads/HJQOeOFtGx.png)
  Sysprep terminé, le poste s'éteint automatiquement
 
 🕐 17.09.2026 10:54:38
-![10_reference_eteinte](./screenshots/10_reference_eteinte.png)
+![10_reference_eteinte](https://hackmd.io/_uploads/SJJKluFYzg.png)
  `PC-STD-REF` éteint et généralisé, prêt à être capturé ✅
 
 ---
@@ -105,37 +105,37 @@ C'est **l'étape clé** du déploiement. Un simple clone donnerait 10 postes por
 Clonezilla est un système « live » : on démarre la VM dessus (aucune installation), et il copie le disque système vers un **fichier image** stocké sur un second disque « dépôt ».
 
 🕐 17.09.2026 11:01:24
-![11_clonezilla_telechargement](./screenshots/11_clonezilla_telechargement.png)
+![11_clonezilla_telechargement](https://hackmd.io/_uploads/BypYxdYFMe.png)
  Clonezilla Live (stable, amd64, iso) téléchargé sur le poste hôte
 
 🕐 17.09.2026 11:14:08
-![12_clonezilla_boot](./screenshots/12_clonezilla_boot.png)
+![12_clonezilla_boot](https://hackmd.io/_uploads/SkLql_KKMe.png)
  démarrage de la VM sur le CD Clonezilla (menu GRUB)
 
 🕐 17.09.2026 11:24:01
-![13_mode_device_image](./screenshots/13_mode_device_image.png)
+![13_mode_device_image](https://hackmd.io/_uploads/S1JoldFtMe.png)
  mode **`device-image`** : travailler entre un disque et un fichier image
 
 > **Point technique — préparation du disque dépôt :** un disque virtuel neuf est **vierge** (aucune partition), or Clonezilla exige un dépôt **formaté**. Il a fallu créer une partition et la formater en ext4 avant de pouvoir y écrire l'image. La distinction entre disque système (`nvme0n1`, 4 partitions Windows) et disque dépôt (`nvme0n2`, vide) a été vérifiée avec `lsblk` pour ne pas formater le mauvais disque.
 
 🕐 17.09.2026 11:38:30
-![14_formatage_disque_depot](./screenshots/14_formatage_disque_depot.png)
+![14_formatage_disque_depot](https://hackmd.io/_uploads/rk5sxuKKzg.png)
  formatage du disque dépôt : `parted` (table GPT + partition) puis `mkfs.ext4`
 
 🕐 17.09.2026 11:41:22
-![15_depot_pret](./screenshots/15_depot_pret.png)
+![15_depot_pret](https://hackmd.io/_uploads/rkM2euKYfg.png)
  `lsblk` confirme la partition **`nvme0n2p1`** prête à recevoir l'image
 
 🕐 17.09.2026 11:55:16
-![16_lancement_capture](./screenshots/16_lancement_capture.png)
+![16_lancement_capture](https://hackmd.io/_uploads/S1xpeutKGx.png)
  lancement de la capture (`savedisk`) du disque système `nvme0n1` vers l'image `image-PC-STD-2026`
 
 🕐 17.09.2026 11:58:30
-![17_capture_progression](./screenshots/17_capture_progression.png)
+![17_capture_progression](https://hackmd.io/_uploads/Hkj0e_tFfx.png)
  copie en cours avec **Partclone** (partition Windows NTFS, débit ~6,4 Go/min)
 
 🕐 17.09.2026 12:01:12
-![18_image_creee_verifiee](./screenshots/18_image_creee_verifiee.png)
+![18_image_creee_verifiee](https://hackmd.io/_uploads/BkOkW_Ytfl.png)
  **image créée et vérifiée** : « All partition images were checked and are **restorable** » ✅ (la vérification prouve que l'image est exploitable)
 
 ---
@@ -145,33 +145,33 @@ Clonezilla est un système « live » : on démarre la VM dessus (aucune install
 Une VM cible **vierge** est créée, on lui attache le disque dépôt (contenant l'image) et l'ISO Clonezilla, puis on **restaure** l'image dessus.
 
 🕐 17.09.2026 13:24:02
-![19_creation_vm_cible](./screenshots/19_creation_vm_cible.png)
+![19_creation_vm_cible](https://hackmd.io/_uploads/B1cl-_YFzl.png)
  création de la VM cible `PC-STD-01` (40 Go) et ajout du disque dépôt
 
 🕐 17.09.2026 13:55:51
-![20_restauration_confirmation](./screenshots/20_restauration_confirmation.png)
+![20_restauration_confirmation](https://hackmd.io/_uploads/SkNbZutKMl.png)
  mode **`restoredisk`** : l'image `image-PC-STD-2026` va être restaurée vers le disque vierge `nvme0n1` de `PC-STD-01` (double confirmation « toutes les données seront écrasées »)
 
 🕐 17.09.2026 14:23:46
-![21_restauration_terminee](./screenshots/21_restauration_terminee.png)
+![21_restauration_terminee](https://hackmd.io/_uploads/Sy3-ZuKYzl.png)
 restauration terminée, `PC-STD-01` s'est éteint automatiquement. On retire alors l'ISO Clonezilla et le disque dépôt avant de démarrer.
 
 ### Vérification de conformité (preuve de test)
 
 🕐 17.09.2026 14:33:12
-![22_login_comptes_deployes](./screenshots/22_login_comptes_deployes.png)
+![22_login_comptes_deployes](https://hackmd.io/_uploads/HyLf-OYtzl.png)
  écran de connexion du poste déployé : les comptes **`admin-local`** et **`utilisateur`** du cahier des charges sont bien présents ✅
 
 🕐 17.09.2026 14:35:53
-![23_verif_hostname_comptes](./screenshots/23_verif_hostname_comptes.png)
+![23_verif_hostname_comptes](https://hackmd.io/_uploads/S1afZ_YKGx.png)
 `hostname` = **`DESKTOP-R16UIG4`**, un **nouveau nom généré automatiquement** (différent du poste de référence) : **preuve que Sysprep a bien attribué une nouvelle identité**. `net user` confirme les comptes standard. ✅
 
 🕐 17.09.2026 14:40:24
-![24_verif_securite_300](./screenshots/24_verif_securite_300.png)
+![24_verif_securite_300](https://hackmd.io/_uploads/SkPXW_YtMg.png)
  le réglage de sécurité (verrouillage après **300 s**) a bien été conservé dans l'image ✅
 
 🕐 17.09.2026 14:41:51
-![25_renommage_pc_std_01](./screenshots/25_renommage_pc_std_01.png)
+![25_renommage_pc_std_01](https://hackmd.io/_uploads/SJk4buFtMe.png)
  attribution du nom final **`PC-STD-01`** au poste déployé ✅
 
 **Bilan de conformité :** le poste déployé possède la même configuration que le poste de référence (comptes, logiciel, sécurité) **mais une identité machine propre** (nouveau SID, nouveau nom). Le déploiement est donc à la fois **standardisé** et **sans conflit d'identité**.
