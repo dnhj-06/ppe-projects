@@ -1,4 +1,10 @@
-# PPE Projects
+<img src="banner.svg" alt="Projets PPE - IT Essentials" width="100%">
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Windows-0078D4?style=flat-square"> <img src="https://img.shields.io/badge/IT_Essentials-0ea5e9?style=flat-square"> <img src="https://img.shields.io/badge/Dépannage-334155?style=flat-square"> <img src="https://img.shields.io/badge/Sauvegarde-334155?style=flat-square"> <img src="https://img.shields.io/badge/Documentation-HackMD-000000?style=flat-square&logo=markdown&logoColor=white">
+</p>
+
+# Projets PPE
 
 Documentation de mes projets réalisés au **Geneva Institute of Technology**, en PPE (Projet Personnel Encadré) et dans le cadre du cours IT Essentials, pendant ma première année de CFC d'informaticien.
 
@@ -14,7 +20,10 @@ Chaque dossier contient une fiche complète : contexte du projet, étapes réali
 | [Projet 4 — Dépannage et diagnostic](./projet-4-depannage-diagnostic) | Diagnostic et résolution d'une panne sur un poste de travail |
 | [Projet 5 — Déploiement standardisé](./projet-5-deploiement-standardise) | Déploiement d'un poste à partir d'une image système standardisée |
 
+---
+
 ## Voir aussi
 
 - [Infrastructure VMware en équipe](https://github.com/dnhj-06/cluster-vsphere) : 3 serveurs ESXi, vCenter et Active Directory
 - [Mon CV et mes contacts](https://dnhj-06.github.io)
+- [← Retour à mon profil](https://github.com/dnhj-06)
