@@ -1,7 +1,9 @@
 <img src="banner.svg" alt="Projets PPE - IT Essentials" width="100%">
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Windows-0078D4?style=flat-square"> <img src="https://img.shields.io/badge/IT_Essentials-0ea5e9?style=flat-square"> <img src="https://img.shields.io/badge/Dépannage-334155?style=flat-square"> <img src="https://img.shields.io/badge/Sauvegarde-334155?style=flat-square"> <img src="https://img.shields.io/badge/Documentation-HackMD-000000?style=flat-square&logo=markdown&logoColor=white">
+  <img src="https://img.shields.io/badge/statut-5_projets_terminés-22c55e?style=for-the-badge&labelColor=131317">
+  <img src="https://img.shields.io/badge/Windows-postes_de_travail-e5243b?style=for-the-badge&labelColor=131317">
+  <img src="https://img.shields.io/badge/doc-HackMD-e5243b?style=for-the-badge&logo=markdown&logoColor=white&labelColor=131317">
 </p>
 
 # Projets PPE
