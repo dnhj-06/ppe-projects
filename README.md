@@ -26,6 +26,8 @@ Chaque dossier contient une fiche complète : contexte du projet, étapes réali
 
 ## Voir aussi
 
+- [Projets Réseau](https://github.com/dnhj-06/projets-reseau) : Cisco IOS dans GNS3
+- [Projets Virtualisation](https://github.com/dnhj-06/projets-virtualisation) : VMware Workstation et ESXi
 - [Infrastructure VMware en équipe](https://github.com/dnhj-06/cluster-vsphere) : 3 serveurs ESXi, vCenter et Active Directory
 - [Mon CV et mes contacts](https://dnhj-06.github.io)
 - [← Retour à mon profil](https://github.com/dnhj-06)
